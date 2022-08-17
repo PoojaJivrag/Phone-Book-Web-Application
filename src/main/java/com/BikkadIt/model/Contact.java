@@ -4,32 +4,39 @@ import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.Data;
+
+
 @Entity
 @Table(name="CONTACT_DTLS")
+@Data
 public class Contact {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="CONTACT_ID")
-	Integer contactId;
+	private Integer contactId;
 	
 	@Column(name="CONTACT_NAME ")
-	String contactName;
+	private String contactName;
 	
 	@Column(name="CONTACT_NUMBER")
-	String contactNumber;
+	private String contactNumber;
 	
 	@Column(name="CONTACT_EMAIL")
-	String contactEmail;
+	private String contactEmail;
 	
 	@Column(name="ACTIVE_SWITCH")
-	Character activeSwitch;
+	private Character activeSwitch;
 	
 	@Column(name="CREATED_DATE")
-	LocalDate createdDate;
+	private LocalDate createdDate;
 	
 	@Column(name="UPDATED_DATE")
-	LocalDate  updateDate;
+	private LocalDate  updateDate;
 }
