@@ -18,12 +18,11 @@ public class ContactServiceImpl implements ContactService {
 	private Contactrepository contactrepository;
 
 	
-	
 	@Override
 	public boolean saveContact(Contact contact) {
 		Contact save = contactrepository.save(contact);
 		
-		if(contact!=null) {
+		if(save !=null) {
 		return true;
 		}
 		return false;
@@ -31,11 +30,12 @@ public class ContactServiceImpl implements ContactService {
 
 	@Override
 	public List<Contact> getAllContact() {
+		List<Contact> findAll = contactrepository.findAll();
 		
-		List<Contact> list = contactrepository.findAll();
-		return list;
+		return findAll;
 	}
 
+	
 	@Override
 	public Contact getContactById(Integer contactId) {
 		 Contact byId = contactrepository.findById(contactId).get();
@@ -43,14 +43,21 @@ public class ContactServiceImpl implements ContactService {
 	}
 
 	@Override
+	public boolean updateContact(Contact contact) {
+	  Contact save = contactrepository.save(contact);
+	  if(save ==null) {
+		  return false;
+	  }else {
+		return true;
+	}
+}
+	@Override
 	public boolean deleteContactById(Integer contactId) {
 		Contact contact = contactrepository.findById(contactId).get();
 		if(contact != null) {
 			contactrepository.deleteById(contactId);
 			return true;
 		}
-		
 		return false;
 	}
-
 }
